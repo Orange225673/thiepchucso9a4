@@ -2,7 +2,7 @@
 
 ## CẤU TRÚC THƯ MỤC:
 ```
-└───Thiệp
+    Thiệp
     │   .env
     │   .gitattributes
     │   .gitignore
@@ -21,7 +21,9 @@
         │       bia-tet.jpg
         │       class1.jpg
         │       class2.jpg
+        │       corner-dao.png
         │       ehhh.png
+        │       khung-class.jpg
         │       xu.png
         │
         └───sounds
@@ -71,6 +73,8 @@ Ctrl + C
 ## LƯU Ý:
 ✅ Server chạy ở folder gốc (ngoài cùng)
 ## AUTHOR & 
-Trần Hữu Nhật Nam 9A4
-Huỳnh Gia Kiệt 9A4
-Hoàng Thanh Trúc 9A4
+``` Trần Hữu Nhật Nam 9A4 (OWNER)```
+
+``` Huỳnh Gia Kiệt 9A4 ```
+
+``` Hoàng Thanh Trúc 9A4 ```

@@ -2,12 +2,11 @@ function package() {
     console.log(`
         {
   "name": "thiep-tet-9a4-server",
-  "version": "1.1.5",
+  "version": "1.6.0",
   "description": "Server cho thiệp Tết 9A4",
   "author": "Trần Hữu Nhật Nam",
   "contributors": [
-    "Huỳnh Gia Kiệt", 
-    "Hoàng Thanh Trúc"
+    "Huỳnh Gia Kiệt", "Hoàng Thanh Trúc"
         ],
   "main": "main.js",
   "scripts": {
@@ -124,6 +123,7 @@ app.get("/index.js", (_, res) => res.status(403).send(`
     white-space: pre;
     margin-block: 1em 1em;
     margin-inline: 0px;">Cannot GET /index.js</pre>`));
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 // =====================
 // START SERVER
