@@ -564,7 +564,7 @@ button:active {
 
 /* media */
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     #anh-lop {
         width: 90%;
         max-height: 35%;
