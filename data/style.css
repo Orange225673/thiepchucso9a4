@@ -46,7 +46,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    /* background-image: url("images/bg.gif"); */
+    background-image: url("images/bg.gif"); 
     background-color: #a3010c;
     z-index: 0;
     background-size: cover;
