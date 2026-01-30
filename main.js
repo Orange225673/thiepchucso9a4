@@ -2,11 +2,12 @@ function package() {
     console.log(`
         {
   "name": "thiep-tet-9a4-server",
-  "version": "1.0.5",
+  "version": "1.1.5",
   "description": "Server cho thiệp Tết 9A4",
   "author": "Trần Hữu Nhật Nam",
   "contributors": [
-    "Huỳnh Gia Kiệt", "Hoàng Thanh Trúc"
+    "Huỳnh Gia Kiệt", 
+    "Hoàng Thanh Trúc"
         ],
   "main": "main.js",
   "scripts": {

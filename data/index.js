@@ -1,8 +1,82 @@
 // index.js
+
+let voiceHasPlayed = false;
 let voiceIsPlaying = false;
+let audioUnlocked = false;
+
+function unlockAudio() {
+    if (audioUnlocked) return;
+
+    const voice = document.getElementById("soundVoice");
+    if (!voice) return;
+
+    // Play 1 frame im lặng để unlock
+    voice.volume = 0;
+    voice.play().then(() => {
+        voice.pause();
+        voice.currentTime = 0;
+        voice.volume = 1;
+        audioUnlocked = true;
+        console.log("🔓 Audio unlocked");
+    }).catch(() => {});
+}
+
+function playVoiceWithFade() {
+    if (voiceHasPlayed) return;
+	const voice = document.getElementById("soundVoice");
+    const bg = document.getElementById("soundBg");
+    const fire = document.getElementById("soundFirework");
+
+    if (!voice || !bg) return;
+
+    voiceHasPlayed = true;
+    voiceIsPlaying = true;
+
+    const bgVol = bg.volume;
+    const fireVol = fire ? fire.volume : 0;
+
+    let step = 0;
+    const steps = 20;
+    const interval = setInterval(() => {
+        step++;
+        bg.volume = Math.max(0, bgVol * (1 - step / steps));
+        if (fire) fire.volume = Math.max(0, fireVol * (1 - step / steps));
+
+        if (step >= steps) {
+            clearInterval(interval);
+
+            bg.pause();
+            if (fire) fire.pause();
+
+            // 🔊 Play voice
+            voice.currentTime = 0;
+            voice.volume = 1;
+            voice.muted = false;
+
+            voice.play().catch(err => {
+                console.warn("Voice bị chặn:", err);
+            });
+
+            voice.onended = () => {
+                voiceIsPlaying = false;
+
+                bg.play();
+                let s = 0;
+                const fadeIn = setInterval(() => {
+                    s++;
+                    bg.volume = Math.min(bgVol, bgVol * (s / steps));
+                    if (fire) fire.volume = Math.min(fireVol, fireVol * (s / steps));
+                    if (s >= steps) clearInterval(fadeIn);
+                }, 40);
+            };
+        }
+    }, 40);
+}
+
 
 function latBia() {
     try {
+        unlockAudio();
         document.getElementById("bia").classList.add("mo");
         document.getElementById("soundOpen").play();
 
@@ -22,6 +96,8 @@ function latBia() {
                 &emsp;Sương mai, nắng ấm miệt mài áng văn<br>
                 &emsp;Chúc cho kiến thức mãi “vàng”<br>
                 &emsp;Con đò, trang sách, nhịp nhàng tương lai<br>
+                &emsp;Học trò nỗ lực sần chai<br>
+                &emsp;Mong cho bền bỉ chẳng ngại khó khăn<br>
 
                 </p>
                 `;
@@ -29,8 +105,6 @@ function latBia() {
                 document.getElementById("noiDungPhai").innerHTML = `
                 <p>
 
-                &emsp;Học trò nỗ lực sần chai<br>
-                &emsp;Mong cho bền bỉ chẳng ngại khó khăn<br>
                 &emsp;Tích lũy, đúc kết hành trang<br>
                 &emsp;Theo em khôn lớn, rộn vang quê nhà<br>
                 &emsp;Cô dì chú bác gần xa<br>
@@ -46,9 +120,7 @@ function latBia() {
                 const tieuDeTrai = document.getElementById("tieuDeTrai");
                 const bgMusic = document.getElementById("soundBg");
                 const soundFireWork = document.getElementById("soundFirework");
-
-                let voiceHasPlayed = false;
-
+                
                 const playVoice = () => {
                     try {
                         const voiceSound = document.getElementById("soundVoice");
@@ -107,9 +179,9 @@ function latBia() {
                 tieuDeTrai.addEventListener("click", playVoice);
 
                 setTimeout(() => {
-                    playVoice();
+                    playVoiceWithFade();
                 }, 5000);
-
+                
                 banPhaoHoa();
                 batDauPhaoHoa();
             } catch (error) {
@@ -208,9 +280,10 @@ function banPhaoHoa() {
     }
 }
 
-let phaoHoaInterval = null;
 
+let phaoHoaInterval = null;
 function batDauPhaoHoa() {
+    
     if (phaoHoaInterval) return;
     phaoHoaInterval = setInterval(banPhaoHoa, 8000);
 }

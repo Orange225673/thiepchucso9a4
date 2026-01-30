@@ -2,30 +2,33 @@
 
 ## CẤU TRÚC THƯ MỤC:
 ```
-│   .gitignore
-│   main.js
-│   package.json
-│   README.md
-│   users.json
-│
-└───data
-    │   index.html
-    │   index.js
-    │   style.css
+└───Thiệp
+    │   .env
+    │   .gitattributes
+    │   .gitignore
+    │   LICENSE
+    │   main.js
+    │   package.json
+    │   README.md
     │
-    ├───images
-    │       bg.gif
-    │       bia-tet.jpg
-    │       class1.jpg
-    │       class2.jpg
-    │       ehhh.png
-    │       xu.png
-    │
-    └───sounds
-            fireworks.mp3
-            open.mp3
-            soundBg.mp3
-            voice.wav
+    └───data
+        │   index.html
+        │   index.js
+        │   style.css
+        │
+        ├───images
+        │       bg.gif
+        │       bia-tet.jpg
+        │       class1.jpg
+        │       class2.jpg
+        │       ehhh.png
+        │       xu.png
+        │
+        └───sounds
+                fireworks.mp3
+                open.mp3
+                soundBg.mp3
+                voice.wav
 ```
 
 ---
@@ -35,8 +38,8 @@
 
 ### Thiệp Tết:
 ```
-http://localhost:20020/
-http://51.75.118.151:20020/
+http://localhost:3000/
+http://{ip}:{port}/
 ```
 
 ## CHIA SẺ CHO BẠN BÈ:
@@ -55,7 +58,7 @@ http://192.168.1.100:20020          (Thiệp)
 
 ### Public Internet (ngrok):
 ```powershell
-ngrok http 20020
+ngrok http 3000
 ```
 ---
 
